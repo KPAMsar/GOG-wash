@@ -15,6 +15,7 @@ class laundry extends Model
         'express_laundry'
 
     ];
+    
     public function calculations(){
 
     }

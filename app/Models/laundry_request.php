@@ -13,10 +13,14 @@ class laundry_request extends Model
         'request_id',
         'firstname',
         'lastname',
+        'address',
         'email',
         'status',
         'phone',
-        'items  ',
 
+
+    ];
+    protected $casts =[
+        'items'=> 'array'
     ];
 }

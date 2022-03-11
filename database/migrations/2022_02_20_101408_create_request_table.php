@@ -19,7 +19,7 @@ class CreateRequestTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
-            $table->string('address');
+            $table->longText('address');
             $table->string('status')->default('0')->nullable();
             $table->string('phone');
             $table->json('items')->nullable();

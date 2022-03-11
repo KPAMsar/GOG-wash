@@ -46,13 +46,14 @@ class requestController extends Controller
                     'timeout' =>10,
                 ]
             );
-            $phone_num="2349093389742";
-            $message=" Finally worked";
+            $req= $data = new laundry_request;
+            $phone_num="2349078820896";
+            $message=" Helllooo you have a laundry request from  $data->firstname = Auth::user()->firstname; , you can reach him through $data->phone = $request->phone; ";
 
             // $phone_num represents the destination phone number. Phone number must be in the international
             // format (Example: 23490126727). You can also send to multiple numbers. To do that put numbers
             // in an array (Example: ["23490555546", "23423490126999"]
-            $params = array("to" => $phone_num,"from" => "a2c",
+            $params = array("to" => $phone_num,"from" => "GOG Wash",
 
             "sms"=>$message,"type" => "plain","channel" => "generic","api_key" => "TLcLnChh9cq51M92Pkd7YqXDIZbehEtenBwrNloleOir9YgWgy71viGMJnOv8w");
 
@@ -116,19 +117,38 @@ class requestController extends Controller
 
 
 
-        $req=  laundry_request::create([
-            'request_id' => $unique ,
-            'firstname' => Auth::user()->firstname,
-            'lastname' => Auth::user()->lastname,
-            'email' => Auth::user()->email,
-            'status' => 0,
-            'phone' => $request['phone'],
-            'items' => Auth::user()->items,
-        ]);
 
-        if($req){
+        $req= $data = new laundry_request;
+             $data->request_id = $unique;
+             $data->firstname = Auth::user()->firstname;
+             $data ->lastname =Auth::user()->lastname;
+             $data ->email =Auth::user()->email;
+             $data->address =$request->address;
+             $data->status = 0;
+             $data->phone = $request->phone;
 
-            echo "point 1";
+             $aa = $data->items = $request->items;
+             $data -> save();
+
+        // //    $aa =  $data->items = serialize($request['items']);
+
+        //    return $aa;
+
+        //  $req=  laundry_request::create([
+        //      'request_id' => $unique ,
+        //      'firstname' => Auth::user()->firstname,
+        //      'lastname' => Auth::user()->lastname,
+        //      'email' => Auth::user()->email,
+        //      'address' => $request['address'],
+        //      'status' => 0,
+        //      'phone' => $request['phone'],
+        //      'items' => $request['items'],
+        //  ]);
+
+
+         if($req){
+
+
             $this->sendSmsToSimBank('' ,  '');
 
 
@@ -137,9 +157,9 @@ class requestController extends Controller
 
 
 
-        return redirect()->route('client.dashboard')->with('success','Request was sent successfully,Our customer care will get in touch with you.');
+          return redirect()->route('client.dashboard')->with('success','Request was sent successfully,Our customer care will get in touch with you.');
 
-    }
+      }
 
     }
     public function showRequest(){
@@ -156,6 +176,7 @@ class requestController extends Controller
             'email' => $data['email'],
             'role' => 0,
             'password' => Hash::make($data['password']),
+
 
         ]);
         return redirect()->route('admin.admin_staff')->with('success', 'Staff Admin added successfully');
@@ -217,5 +238,8 @@ class requestController extends Controller
         return  view('client.itemlist',['data'=>$data]);
     }
 
+    public function showcheckout(){
+        return view('client.checkout');
+    }
 
 }

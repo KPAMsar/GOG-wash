@@ -154,6 +154,7 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
 
 });
 Route::get('item-list',[requestController::class, 'itemlist']);
+Route::get('checkout',[requestController::class, 'showcheckout']);
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\laundry;
 use App\Models\laundry_request;
 use Auth;
 
@@ -52,7 +53,9 @@ class clientController extends Controller
 
     }
     public function sendRequest(){
-        return view('client.request');
+        $data = laundry::all();
+
+        return view('client.request',['data'=>$data]);
     }
 
 

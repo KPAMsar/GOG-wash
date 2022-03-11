@@ -71,7 +71,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="validationCustom01 " class="request-form">Home Address </label>
-                        <input type="text" class="form-control" id="validationCustom01" name="address" value="{{Auth::user()->address}}" required>
+                        <input type="text" class="form-control" id="validationCustom01" name="address" value="" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -88,6 +88,51 @@
                 </div>
                 <!-- <a href="#">SELECT LAUNDRY ITEMS</a> -->
                 <br>
+
+                <table class="table">
+
+                <thead class="" style=" background-color:#063464;" >
+                    <tr>
+                    <th scope="col" style=" color:white;" >#</th>
+                    <th scope="col" style=" color:white;">Item</th>
+                    <th scope="col" style=" color:white;">Price</th>
+                    <th scope="col" style=" color:white;">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($data as $item)
+
+
+                    <tr>
+                    <th scope="row">•</th>
+                    <td>{{$item ->item}}</td>
+                    <td>{{$item ->price}}</td>
+                    <td>
+
+
+                         <div class="form-check">
+                        <input class="form-check-input" value="{{$item->item}}"  name="items[]" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Add to List
+                        </label>
+                    </div>
+                </td>
+
+                    </tr>
+
+                @endforeach
+                </tbody>
+                </table>
+
+                <br>
+
+
+                <div>
+                <input class="form-control" type="text" placeholder="Add Other Items " >
+
+                </div>
+                <br>
                 <div class="form-group">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -101,7 +146,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" style="background-color:#063464;" >Request</button>
+                <button type="submit" class="btn btn-primary" name="items[]" style="background-color:#063464;" >Request</button>
 
             </form>
                     <script>
@@ -134,6 +179,6 @@
 
 
 
-
+<br>
 
 @endsection
