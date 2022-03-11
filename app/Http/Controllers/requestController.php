@@ -212,6 +212,10 @@ class requestController extends Controller
 
 
     }
+    public function itemlist(){
+        $data = laundry::all();
+        return  view('client.itemlist',['data'=>$data]);
+    }
 
 
 }
