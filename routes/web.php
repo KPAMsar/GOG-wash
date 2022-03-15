@@ -10,7 +10,7 @@ use App\Http\Controllers\adminStaffController;
 use App\Http\Controllers\laundryItemsController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\requestController;
-
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,7 +144,7 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     Route::get('req',[requestController::class, 'call'])->name('client.req');
     // Route::post('req',[requestController::class, ' placeRequest'])->name('client.placerequest');
     Route::get('request',[requestController::class, 'showRequest'])->name('client.request');
-    Route::post('request',[requestController::class, 'placeRequest'])->name('client.create.request');
+    Route::post('request',[requestController::class, 'cart'])->name('client.create.request');
     Route::get('request',[clientController::class, 'sendRequest'])->name('client.sendrequest');
 
     //CLIENT PROFILE
@@ -154,8 +154,15 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
 
 });
 Route::get('item-list',[requestController::class, 'itemlist']);
-Route::get('checkout',[requestController::class, 'showcheckout']);
+Route::get('checkout',[requestController::class, 'showCart']);
 
 
 
 
+
+
+Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
+
+Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment');
+
+Route::get('pay',[PaymentController::class, 'pay']);

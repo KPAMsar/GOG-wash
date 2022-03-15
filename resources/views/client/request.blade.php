@@ -112,9 +112,9 @@
 
 
                          <div class="form-check">
-                        <input class="form-check-input" value="{{$item->item}}"  name="items[]" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" value="item:{{$item->item}}, price: {{$item->price}}"  name="items[]" type="checkbox" value="" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
-                            Add to List
+                            Add to  cart
                         </label>
                     </div>
                 </td>
@@ -146,7 +146,18 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" name="items[]" style="background-color:#063464;" >Request</button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary" name="items[]" style="background-color:#063464;" > Home      </button>
+
+                        </div>
+                        <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary" name="items[]" style="background-color:#063464;" >Proceed</button>
+
+                        </div>
+                    </div>
+                </div>
 
             </form>
                     <script>

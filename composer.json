@@ -12,7 +12,8 @@
         "laravel/nexmo-notification-channel": "^2.5",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.4"
+        "laravel/ui": "^3.4",
+        "unicodeveloper/laravel-paystack": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

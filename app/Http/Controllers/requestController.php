@@ -8,6 +8,7 @@ use math;
 use Auth;
 use App\Models\User;
 use App\Models\laundry;
+use App\Models\cart;
 use random_int;
 use Nexmo\Laravel\Facade\Nexmo;
 
@@ -48,7 +49,7 @@ class requestController extends Controller
             );
             $req= $data = new laundry_request;
             $phone_num="2349078820896";
-            $message=" Helllooo you have a laundry request from  $data->firstname = Auth::user()->firstname; , you can reach him through $data->phone = $request->phone; ";
+            $message=" Helllooo you have a laundry request, you can reach him through";
 
             // $phone_num represents the destination phone number. Phone number must be in the international
             // format (Example: 23490126727). You can also send to multiple numbers. To do that put numbers
@@ -162,6 +163,74 @@ class requestController extends Controller
       }
 
     }
+
+
+    // Saving to  cart first of all
+
+
+
+    public function showCart(){
+        // $data = cart::where('email','=',Auth::user()->email)->get();
+        // $data = cart::all();
+        $data = cart::all();
+
+         return view('client.checkout',['data'=> $data]);
+    }
+
+
+
+
+    public function cart(Request $request )
+    {
+
+
+        $seed = '123'; // a password that both the parent and source have
+        $string = md5(time().$seed);
+
+        $unique = md5($string);
+
+
+        $laundry_items = laundry::all();
+
+        $req= $data = new cart;
+             $data->cart_id = $unique;
+             $data->firstname = Auth::user()->firstname;
+             $data ->lastname =Auth::user()->lastname;
+             $data ->email =Auth::user()->email;
+             $data->address =$request->address;
+             $data->status = 0;
+             $data->phone = $request->phone;
+
+             $aa = $data->items = $request->items;
+             $data -> save();
+
+
+
+         if($req){
+
+
+            // $this->sendSmsToSimBank('' ,  '');
+
+          return redirect()->route('client.dashboard')->with('success','Request was sent successfully,Our customer care will get in touch with you.');
+
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function showRequest(){
         $data = laundry_request::where('status','0')->get();
          return view('staff.request',['data'=> $data]);
