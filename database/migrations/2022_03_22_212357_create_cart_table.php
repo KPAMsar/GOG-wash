@@ -15,15 +15,9 @@ class CreateCartTable extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->string('cart_id');
-            $table->string('firstname');
-            $table->string('lastname');
             $table->string('email');
-            $table->longText('address');
-            $table->string('status')->default('0')->nullable();
-            $table->string('phone');
-            $table->json('items')->nullable();
-            $table->rememberToken();
+            $table->string('item_id');
+            $table->string('item_qty');
             $table->timestamps();
         });
     }

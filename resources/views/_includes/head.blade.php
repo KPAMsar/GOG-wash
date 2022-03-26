@@ -4,13 +4,95 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/js/my.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript">
+      var incrementItemID_Z9 = (e) => {
+    e.preventDefault();
+            // var inc_value = $('.qty-input').val();
+            var inc_value = $(this).closest('laundry_data').find('.qty-input').val();
+            var value = parseInt(inc_value);
+            value = isNaN(value) ? 0:value;
+
+            // if(value < 10){
+                value++;
+                // $('.qty-input').val(value);
+                $(this).closest('laundry_data').find('.qty-input').val();
+            // }
+    }
+
+    var decrementItemID_Z9 = (e) => {
+    e.preventDefault();
+            // var inc_value = $('.qty-input').val();
+            var inc_value = $(this).closest('laundry_data').find('.qty-input').val();
+            var value = parseInt(inc_value);
+            value = isNaN(value) ? 0:value;
+
+             if(value > 0){
+                value--;
+                // $('.qty-input').val(value);
+                $(this).closest('laundry_data').find('.qty-input').val();
+            }
+    }
+
+    var addToCartBtn_1 = (e) => {
+        e.preventDefault();
+        var item_id =$('.item_id').text();
+        var item_quantity =$('.item_qty').val();
+        return
+
+         $.ajaxSetup({
+         headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+         });
+        $.ajax({
+            type: "post",
+            url: "/add-to-cart/{id}",
+            data: {
+               item_quantity:item_quantity,
+            },
+            success: function (response) {
+                alert(response.status);
+            }
+        });
+
+        alert(item_quantity );
+    //     $.ajax({
+    //         url: "/add-to-cart/{id}",
+    //         type: 'POST',
+    //         data: {
+
+    //      item_qty:item_quantity,
+    //  },
+    //         beforeSend: function (request) {
+    //             return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+    //         },
+    //         success: data => {
+    //             console.log(data);
+    //         }
+    //     });
+    }
+  </script>
 
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
 <title>@yield('title')</title>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 <!-- favicon -->
 <link href="assets/images/favicon/favicon.png" rel="icon" />
 

@@ -4,6 +4,7 @@
 <head>
 
   @include('_includes.head')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -85,6 +86,7 @@
   </div>
 
   @include('_includes.foot')
+
 
 </body>
 

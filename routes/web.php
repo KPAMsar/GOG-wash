@@ -11,6 +11,11 @@ use App\Http\Controllers\laundryItemsController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\requestController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\cartcontroller;
+use App\Http\Controllers\checkoutController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +49,7 @@ Route::get('pricing',[frontendController::class, 'prices']);
 Route::middleware('auth')->group(function ()
  {
     Route::resource('/customers', 'CustomerController', ['except' => ['show']]);
+
 
  });
 
@@ -145,11 +151,21 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     // Route::post('req',[requestController::class, ' placeRequest'])->name('client.placerequest');
     Route::get('request',[requestController::class, 'showRequest'])->name('client.request');
     Route::post('request',[requestController::class, 'cart'])->name('client.create.request');
-    Route::get('request',[clientController::class, 'sendRequest'])->name('client.sendrequest');
+    // Route::get('request',[clientController::class, 'sendRequest'])->name('client.sendrequest');
+    Route::get('cart',[cartcontroller::class, 'index'])->name('client.sendrequest');
+
+    // Route::post('add-to-cart/{id}',[cartcontroller::class, 'addtocart']);
+
 
     //CLIENT PROFILE
     Route::get('edit-profile/{id}',[clientController::class, 'showEdit'])->name('client.show.profile');
     Route::Put('update-profile/{id}',[clientController::class, 'update'])->name('client.update.profile');
+
+    Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
+    Route::get('laundry-cart',[cartcontroller::class, 'cart']);
+    Route::get('delete-laundry-item/{id}',[cartcontroller::class, 'remove']);
+    Route::get('checkout',[cartcontroller::class, 'remove']);
+
 
 
 });
@@ -161,8 +177,15 @@ Route::get('checkout',[requestController::class, 'showCart']);
 
 
 
-Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 
-Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('payy',[PaymentController::class, 'index']);
 
-Route::get('pay',[PaymentController::class, 'pay']);
+Route::post('add-to-cart',[cartcontroller::class, 'addtocart']);
+
+// Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
+Route::post('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
+
+
+

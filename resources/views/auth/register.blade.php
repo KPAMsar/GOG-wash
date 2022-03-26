@@ -57,6 +57,10 @@
                   <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password_confirmation" id="exampleInputPassword" placeholder="Confirm Password">
 
                 </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user " value="" name="ref" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Referal Code(Optional)" autofocus>
+
+                </div>
 
                 <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color:#063464; color:white;">
                   Sign up

@@ -38,4 +38,8 @@ class PaymentController extends Controller
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
     }
+
+    public function index(){
+        return view('client.payform');
+    }
 }
