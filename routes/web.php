@@ -164,7 +164,7 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
     Route::get('laundry-cart',[cartcontroller::class, 'cart']);
     Route::get('delete-laundry-item/{id}',[cartcontroller::class, 'remove']);
-    Route::get('checkout',[cartcontroller::class, 'remove']);
+    Route::get('checkout',[checkoutController::class, 'index']);
 
 
 

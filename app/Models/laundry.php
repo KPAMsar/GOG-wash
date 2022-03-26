@@ -15,8 +15,8 @@ class laundry extends Model
         'express_laundry'
 
     ];
-    
-    public function calculations(){
 
+    public function cart(){
+        return $this->hasMany('App\Models\Cart');
     }
 }
