@@ -14,7 +14,14 @@ class checkoutController extends Controller
         $data = Cart::where('email',Auth::user()->email )->get();
         return view('client.checkout',['data'=>$data]);
     }
-    public function checkoutcart(){
-        //
+    public function showPaymentPage(){
+        return view('client.paymentpage');
+    }
+
+    public function payWithCrypto(){
+        return view('client.crypto');
+    }
+    public function payWithCash(){
+        return view('client.crypto');
     }
 }

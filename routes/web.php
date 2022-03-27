@@ -133,9 +133,6 @@ Route::group(['prefix'=>'staff','middleware'=>'staffMiddleware','auth'], functio
 
 
 
-
-
-
 Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], function(){
     Route::get('dashboard',[clientController::class, 'index'])->name('client.dashboard');
     Route::get('profile',[clientController::class, 'profile'])->name('client.profile');
@@ -162,9 +159,9 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     Route::Put('update-profile/{id}',[clientController::class, 'update'])->name('client.update.profile');
 
     Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
-    Route::get('laundry-cart',[cartcontroller::class, 'cart']);
+    Route::get('laundry-cart',[cartcontroller::class, 'cart'])->name('client.laundry-cart');
     Route::get('delete-laundry-item/{id}',[cartcontroller::class, 'remove']);
-    Route::get('checkout',[checkoutController::class, 'index']);
+    Route::get('checkout',[checkoutController::class, 'index'])->name('client.checkout');
 
 
 
@@ -186,6 +183,11 @@ Route::post('add-to-cart',[cartcontroller::class, 'addtocart']);
 
 // Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
 Route::post('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
+Route::get('payment-page',[checkoutController::class, 'showPaymentPage'])->name('payment.page');
+Route::get('pay-with-crypto',[checkoutController::class, 'payWithCrypto'])->name('client.paywithcrypto');
+Route::get('pay-with-cash',[checkoutController::class, 'payWithCash'])->name('client.paywithcash');
 
+
+Route::post('q',[requestController::class, 'placeRequest'])->name('q');
 
 

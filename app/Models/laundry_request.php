@@ -16,6 +16,7 @@ class laundry_request extends Model
         'address',
         'email',
         'status',
+        'payment_status',
         'phone',
 
 

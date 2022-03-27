@@ -34,9 +34,7 @@
     </div>
 
 	<div class="row">
-    <div class="col-xl-1.5 col-md-1 ">
-
-    </div>
+    
 		<div class="col-xl-3 col-md-6 mb-4 ">
 			<div class="card border-left-primary shadow h-100 py-2  carb-" style=" background-color:var(--gray);">
 				<div class="card-body ">
@@ -44,11 +42,11 @@
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
 
-                            <span ><h class="dashboard"> Balance</h></span>
+                            <span ><h class="dashboard" style="color:white;"> Cart</h></span>
                             <!-- <h6>Account Balance</h6> -->
                             </div>
                             <div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard">####</h></span>
+                            <span ><h class="dashboard">0</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
@@ -101,11 +99,9 @@
 
             <br>
 		</div>
-        <div class="col-xl-1.5 col-md-3 ">
+        
 
-        </div>
-
-		<!-- <div class="col-xl-3 col-md-6 mb-4">
+		 <div class="col-xl-3 col-md-6 mb-4">
 			<div class="card border-left-warning shadow h-100 py-2 carb-4" style=" background-color:#1cc88a;">
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
@@ -120,7 +116,7 @@
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div> <br>
 	</div>
 
 

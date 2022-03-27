@@ -8,7 +8,8 @@ use math;
 use Auth;
 use App\Models\User;
 use App\Models\laundry;
-use App\Models\cart;
+use App\Models\Cart;
+use App\Models\orderItems;
 use random_int;
 use Nexmo\Laravel\Facade\Nexmo;
 
@@ -48,8 +49,8 @@ class requestController extends Controller
                 ]
             );
             $req= $data = new laundry_request;
-            $phone_num="2349078820896";
-            $message=" Helllooo you have a laundry request, you can reach him through";
+            $phone_num="2349161814905";
+            $message=" Helllooo you have a laundry request from you can reach him through" ;
 
             // $phone_num represents the destination phone number. Phone number must be in the international
             // format (Example: 23490126727). You can also send to multiple numbers. To do that put numbers
@@ -115,23 +116,56 @@ class requestController extends Controller
         $string = md5(time().$seed);
 
         $unique = md5($string);
-
+        $unique1 = 'gog'.rand(1111, 9999);
 
 
 
         $req= $data = new laundry_request;
-             $data->request_id = $unique;
+             $data->request_id = $unique1;
              $data->firstname = Auth::user()->firstname;
              $data ->lastname =Auth::user()->lastname;
-             $data ->email =Auth::user()->email;
+             $data ->email = Auth::user()->email;
              $data->address =$request->address;
              $data->status = 0;
+
              $data->phone = $request->phone;
 
-             $aa = $data->items = $request->items;
+
              $data -> save();
 
-        // //    $aa =  $data->items = serialize($request['items']);
+
+
+
+             $cartitems = Cart::where('email', Auth::user()->email)->get();
+        foreach($cartitems as $item)
+                {
+                orderItems::create([
+                    'request_id'=> $data->id,
+                    'item_id'=> $item->item_id,
+                    'price'=>$item->item_qty,
+                    'item_qty'=> $item->laundrys->price,
+                ]);
+
+                 }
+
+                 if(Auth::user()->address == NULL){
+                     $user = user::where('email',Auth::user()->email)->first();
+                    $user->firstname = Auth::user()->firstname;
+                    $user->lastname =Auth::user()->lastname;
+                    $user->email = Auth::user()->email;
+                    $user->address =$request->address;
+                    $user->status = 0;
+        
+                    $user ->phone = $request->phone;
+        
+                 }
+
+                 $oldcartitems = Cart::where('email',Auth::user()->email)->get();
+                 Cart::destroy($oldcartitems);
+
+
+
+
 
         //    return $aa;
 
@@ -150,7 +184,7 @@ class requestController extends Controller
          if($req){
 
 
-            $this->sendSmsToSimBank('' ,  '');
+            //  $this->sendSmsToSimBank('' ,  '');
 
 
 
@@ -158,7 +192,7 @@ class requestController extends Controller
 
 
 
-          return redirect()->route('client.dashboard')->with('success','Request was sent successfully,Our customer care will get in touch with you.');
+          return redirect()->route('payment.page');
 
       }
 

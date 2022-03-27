@@ -22,7 +22,7 @@ class CreateRequestTable extends Migration
             $table->longText('address');
             $table->string('status')->default('0')->nullable();
             $table->string('phone');
-            $table->json('items')->nullable();
+            $table->json('payment_status')->default('0')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

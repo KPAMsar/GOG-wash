@@ -15,7 +15,7 @@ class Cart extends Model
         'item_id',
         'item_qty',
     ];
-    public function laundry(){
-        return $this->belongsTo(laundry::class, 'price','items');
+    public function laundrys(){
+        return $this->belongsTo(laundry::class, 'item_id','item');
     }
 }

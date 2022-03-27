@@ -50,7 +50,7 @@ class cartcontroller extends Controller
          $item_qty = $request-> item_quantity_;
         if(Auth::check()){
 
-            $item_check = cart::where('item_qty','=',$item_qty)->where('email',Auth::user()->email)->first();
+            $item_check = cart::where('item_qty',$item_qty)->where('email',Auth::user()->email)->first();
             if($item_check){
                 return back()->with('success','Already inside the laundry cart' );}
             else{

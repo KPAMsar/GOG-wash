@@ -16,7 +16,7 @@
     <div>
         <div>
             <h5 class="dashboard-wel text-center" >laundry Request</h5>
-            
+
 
         </div>
     </div>
@@ -72,7 +72,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="validationCustom01 " class="request-form">Home Address </label>
-                        <input type="text" class="form-control" id="validationCustom01" name="address" value="" required>
+                        <input type="text" class="form-control" id="validationCustom01" name="phone" value="" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>

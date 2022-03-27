@@ -49,7 +49,7 @@
                                 </div>
                         </div>
 
-                        <div class="card" style="width: 58rem;">
+                        <div class="card " style="width: 45rem;">
                         <div class="card-header">
                             <div>
 
@@ -65,7 +65,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                    <!-- @php $total= 0; @endphp -->
                                         @foreach($data as $item)
                                         <form id="quantity" class="laundry_items" action="{{url('add-to-cart/'.$item->id)}}" method="post">
                                             @csrf
@@ -89,16 +89,22 @@
                                                 <button type="button" onclick="incrementItemID_Z9(event)" class="input-group-text increment-btn">+</button>
                                             </div>
                                             </td>
-                                            <td>{{$item->price * 3}} </td>
+                                            <td>{{$item->price }} </td>
 
                                             <td>
                                                 <button type="submit"  class="btn btn-success addToCartBtn">Add to Cart</button></a></td>
                                             </tr>
                                             </form>
+                                            @php $total +=$item->price *
                                         @endforeach
 
                                     </tbody>
                             </table>
+
+                            <div>
+                            <a href="{{route('client.laundry-cart')}}"><button type="button" class="btn btn-primary">Proceed</button></a>
+
+                            </div>
 
                             </div>
 

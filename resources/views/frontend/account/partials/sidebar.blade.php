@@ -37,7 +37,7 @@
 <li class="nav-item ">
 
 <a class="nav-link" href="{{ route('client.profile') }}">
-<i class="fa fa-tachometer" aria-hidden="true"></i>
+<i class="fas fa-user"" aria-hidden="true"></i>
   <span ><h class="dashboard">Profile </h></span></a>
 </li>
 
@@ -47,6 +47,14 @@
 <a class="nav-link" href="{{route('client.sendrequest')}}">
   <i class="fa fa-paper-plane" aria-hidden="true"></i>
   <span ><h class="dashboard">Request</h></span></a>
+</li>
+
+ <!-- Nav Item - Transactions -->
+ <li class="nav-item ">
+
+<a class="nav-link" href="{{route('client.laundry-cart')}}">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <span ><h class="dashboard">Cart</h></span></a>
 </li>
 
 

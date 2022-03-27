@@ -19,7 +19,7 @@
     </div>
 
 	<div class="row">
-		<div class="col-xl-1 col-md- ">
+		<div class="col-xl-1 col-md-12 ">
 
 		</div>
 		<div class="col-xl-9 col-md-12 ">
@@ -32,23 +32,10 @@
 
 						</div>
 
-                        <div class="text-center">
-                        <!-- <img src="assets/images/logo/kpam.jpg" class="rounded profile-img" alt="..."> -->
-                        </div>
-
                                     <div class="col-md-8">
                                     <div class="card-body">
 
-
-
-                                    </div>
-                                    </div>
-
-                                </div>
-                        </div>
-
-                        <div class="card" style="width: 45rem;">
-                        <div class="card-header">
+                                    <div class="card-header">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-9 col-sm-6">
@@ -72,8 +59,12 @@
                         </ul>
                          </div>
 
-                        <br>
-                    </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                        </div>
+
 
 
 

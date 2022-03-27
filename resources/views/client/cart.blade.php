@@ -21,6 +21,7 @@
 	<div class="row">
 		<div class="col-xl-1 col-md- ">
 
+
 		</div>
 		<div class="col-xl-9 col-md-12 ">
         <div class="card border-left-prima shadow h-100 py-2 cab-1">
@@ -32,9 +33,6 @@
 
 						</div>
 
-                        <div class="text-center">
-                        <!-- <img src="assets/images/logo/kpam.jpg" class="rounded profile-img" alt="..."> -->
-                        </div>
 
                                     <div class="col-md-8">
                                     <div class="card-body">
@@ -47,7 +45,7 @@
                                 </div>
                         </div>
 
-                        <div class="card" style="width: 58rem;">
+                        <div class="card" style="width: 45rem;">
                         <div class="card-header">
                             <div class="container">
                                 <div class="row">
@@ -66,7 +64,9 @@
                                     <tbody>
                                         <tr>
 
-                                        <th scope="row">{{$item->id}}</th>
+                                        <th scope="row">
+                                        <li><span class="fa-li"><i class="fa-solid fa-check-square"></i></span></li>
+                                        </th>
                                         <td>{{$item->item_id}}</td>
                                         <td>
                                         <div class="input-group text-center mb-3" style="width:130px;">
@@ -93,20 +93,22 @@
                                         </tr>
 
                                     </tbody>
+
                                     @endforeach
 
                                     <div>
-                                    <tr><th scope="col">SUB-TOTAL</th></tr>
-                                    <tr><th scope="col">VAT</th></tr>
+                                    <!-- <tr><th scope="col">SUB-TOTAL</th></tr>
+                                    <tr><th scope="col">VAT</th></tr> -->
+                                    <hr>
                                         <tr><th scope="col">TOTAL</th></tr>
 
-
+                                    <hr>
 
                                     </div>
 
                                 </table>
+                                <a href="{{route('client.checkout')}}"><button type="button" class="btn btn-primary">Proceed</button></a>
 
-                                <button>Proceed to Checkout</button>
 
                                 </div>
                             </div>
