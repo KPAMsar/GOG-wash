@@ -95,7 +95,7 @@
                                                 <button type="submit"  class="btn btn-success addToCartBtn">Add to Cart</button></a></td>
                                             </tr>
                                             </form>
-                                            @php $total +=$item->price *
+                                            <!-- @php $total +=$item->price * -->
                                         @endforeach
 
                                     </tbody>

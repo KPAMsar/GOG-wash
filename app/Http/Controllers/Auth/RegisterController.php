@@ -77,6 +77,9 @@ class RegisterController extends Controller
             'ref' => $referrer ? $referrer->id : null,
             'password' => Hash::make($data['password']),
         ]);
+        event(new UserReferred(request()->cookie('ref'), $user));
+        return $user;
+
 
 
     }

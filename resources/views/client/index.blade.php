@@ -34,7 +34,7 @@
     </div>
 
 	<div class="row">
-    
+
 		<div class="col-xl-3 col-md-6 mb-4 ">
 			<div class="card border-left-primary shadow h-100 py-2  carb-" style=" background-color:var(--gray);">
 				<div class="card-body ">
@@ -46,11 +46,11 @@
                             <!-- <h6>Account Balance</h6> -->
                             </div>
                             <div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard">0</h></span>
+                            <span ><h class="dashboard" style="color:white;" >{{$cartcount}}</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
-							<i class="fa fa-calculator fa-2x text-gray-300"></i>
+							<i class="fa fa-shopping-cart fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
@@ -64,14 +64,14 @@
 							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
 
 
-                            <span ><h class="dashboard">Total Request</h></span>
+                            <span ><h class="dashboard" style="color:white;">Total Request</h></span>
                         </div>
 							<div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard">{{$count}}</h></span>
+                            <span ><h class="dashboard" style="color:white;" >{{$count}}</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
-							<i class="fa fa-money-bil fa-2x text-gray-300"></i>
+							<i class="fa fa-paper-plane fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
@@ -84,22 +84,22 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="dashboard"> REFERAL CODE</h></span></div>
+                            <span ><h class="dashboard" style="color:white;" > GOG POINTS</h></span></div>
                             <div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard">######</h></span>
+                            <span ><h class="dashboard" style="color:white;">######</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
-							<i class="fa fa-file-invoice fa-2x text-gray-300"></i>
+							<i class="fa fa-level-up fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 
 
-            <br>
+
 		</div>
-        
+
 
 		 <div class="col-xl-3 col-md-6 mb-4">
 			<div class="card border-left-warning shadow h-100 py-2 carb-4" style=" background-color:#1cc88a;">
@@ -107,19 +107,20 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="dashboard"> REFERAL CODE</h></span></div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800">5</div>
+                            <span ><h class="dashboard" style="color:white;" >LAUNDRY STATUS</h></span></div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800" style="color:white;">5</div>
 						</div>
 						<div class="col-auto">
-							<i class="fa fa-money-bill-alt fa-2x text-gray-300"></i>
+							<i class="fa fa-spinner fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div> <br>
 	</div>
+        <div>
 
-
+        </div>
 
         <div>
 

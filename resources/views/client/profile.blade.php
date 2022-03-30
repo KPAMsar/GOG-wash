@@ -32,16 +32,16 @@
 
 						</div>
 
-                                    <div class="col-md-8">
+                                    <div class="col-md- ">
                                     <div class="card-body">
 
                                     <div class="card-header">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-9 col-sm-6">
+                                    <div class="col-md-9 col-sm-12">
                                     <h5 class="dashboard-wel">Data </h5>
                                     </div>
-                                    <div class="col-md-3 col-sm-6">
+                                    <div class="col-md-3 col-sm-12">
                                     <a href="{{url('client/edit-profile/'.Auth::user()-> id)}}" class="btn btn-primary">Update profile</a>
                                     </div>
                                 </div>
@@ -50,11 +50,27 @@
                         </div>
                         <div class="col-md-9 col-sm-6">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"> <h5 class="profile-wel">First Name:{{Auth::user()->firstname}} </h5></li>
+                            <li class="list-group-item"> <h5 ">First Name:{{Auth::user()->firstname}} </h5></li>
                             <li class="list-group-item"><h5 class="profile-wel">Lastname:{{Auth::user()->lastname}}</h5></li>
                             <li class="list-group-item"><h5 class="profile-wel">Email:{{Auth::user()->email}}</h5></li>
                             <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel">Phone number:{{Auth::user()->phone}}</h5></li>
                             <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel">Address:{{Auth::user()->address}}</h5></li>
+
+                            @forelse(auth()->user()->getReferrals() as $referral)
+
+                                <code>
+                                <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel" style="font-size:15px;">Referal Link:{{ $referral->link }}</h5></li>
+
+                                </code>
+                                <p>
+                                <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel">Number of referred users: {{ $referral->relationships()->count() }}</h5></li>
+
+
+                                </p>
+                            @empty
+                                No referrals
+                            @endforelse
+
                             <!-- <li class="list-group-item"><h5 class="profile-wel"> <h5 class="profile-wel">Referal Code:GOG001</h5></li> -->
                         </ul>
                          </div>

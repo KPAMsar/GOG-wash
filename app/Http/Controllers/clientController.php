@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Cart;
 use App\Models\laundry;
 use App\Models\laundry_request;
 use Auth;
@@ -11,8 +12,13 @@ use Auth;
 class clientController extends Controller
 {
     public function index(){
+        $cartcount = Cart::where('email','=',Auth::user()->email)->count();
+
         $count = laundry_request::where('email','=',Auth::user()->email)->count();
-        return view('client.index',['count'=>$count]);
+        return view('client.index',[
+            'count'=>$count,
+            'cartcount'=>$cartcount,
+        ]);
     }
 
     public function profile(){

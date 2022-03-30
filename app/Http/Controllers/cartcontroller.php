@@ -45,12 +45,13 @@ class cartcontroller extends Controller
 
     }
     public function addtocartt(Request $request, $id){
-        //   $item = laundry::find($id,['item']);
+        
+         $item = $request->item_id;
         //   $price =laundry::find($id,['price']);
          $item_qty = $request-> item_quantity_;
         if(Auth::check()){
 
-            $item_check = cart::where('item_qty',$item_qty)->where('email',Auth::user()->email)->first();
+            $item_check = cart::where('item_id','=',$item) && Cart::where('email','=',Auth::user()->email)->first();
             if($item_check){
                 return back()->with('success','Already inside the laundry cart' );}
             else{
@@ -89,6 +90,7 @@ class cartcontroller extends Controller
         $delete_id->delete();
         return back()->with('success','Item removed from cart succesfully');
     }
+
 
 
 

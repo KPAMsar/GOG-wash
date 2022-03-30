@@ -44,4 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getReferrals()
+{
+    return ReferralProgram::all()->map(function ($program) {
+        return ReferralLink::getReferral($this, $program);
+    });
+}
 }

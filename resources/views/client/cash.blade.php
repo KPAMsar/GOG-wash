@@ -32,7 +32,8 @@
 							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
                             <div>
                                 Our customer care service will get in contact with you.
-                                
+                                <br><br><button class="btn btn-primary"  onclick="" type="submit">Accept</button>
+                               
                             </div>
 
 						</div>

@@ -22,6 +22,6 @@ class checkoutController extends Controller
         return view('client.crypto');
     }
     public function payWithCash(){
-        return view('client.crypto');
+        return view('client.cash');
     }
 }

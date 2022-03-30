@@ -13,6 +13,7 @@ use App\Http\Controllers\requestController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\cartcontroller;
 use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\pointsController;
 
 
 
@@ -137,7 +138,7 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     Route::get('dashboard',[clientController::class, 'index'])->name('client.dashboard');
     Route::get('profile',[clientController::class, 'profile'])->name('client.profile');
     Route::get('settings',[clientController::class, 'index'])->name('client.settings');
-    // Route::get('account',[clientController::class, 'account'])->name('client.account');
+     Route::get('account',[clientController::class, 'account'])->name('client.account');
 
     Route::get('transactions',[clientController::class, 'transactions'])->name('client.transactions');
     Route::get('items',[frontendController::class, 'clothes'])->name('client.items');
@@ -176,7 +177,7 @@ Route::get('checkout',[requestController::class, 'showCart']);
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/payment/callback', [PaymentController::class,'handleGatewayCallback']);
 Route::get('payy',[PaymentController::class, 'index']);
 
 Route::post('add-to-cart',[cartcontroller::class, 'addtocart']);
@@ -189,5 +190,6 @@ Route::get('pay-with-cash',[checkoutController::class, 'payWithCash'])->name('cl
 
 
 Route::post('q',[requestController::class, 'placeRequest'])->name('q');
+Route::get('points',[pointsController::class, 'index'])->name('q');
 
 

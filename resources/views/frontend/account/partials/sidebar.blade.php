@@ -27,7 +27,7 @@
     <!-- Nav Item - Account -->
   <li class="nav-item ">
 
-<a class="nav-link" href="#">
+<a class="nav-link" href="{{route('client.account')}}">
   <i class="fa fa-users" aria-hidden="true"></i>
   <span ><h class="dashboard">Account</h></span></a>
 </li>

@@ -140,13 +140,14 @@ class requestController extends Controller
         foreach($cartitems as $item)
                 {
                 orderItems::create([
-                    'request_id'=> $data->id,
+                    'request_id'=> $data->request_id,
                     'item_id'=> $item->item_id,
                     'price'=>$item->item_qty,
                     'item_qty'=> $item->laundrys->price,
                 ]);
 
                  }
+
 
                  if(Auth::user()->address == NULL){
                      $user = user::where('email',Auth::user()->email)->first();
@@ -155,9 +156,9 @@ class requestController extends Controller
                     $user->email = Auth::user()->email;
                     $user->address =$request->address;
                     $user->status = 0;
-        
+
                     $user ->phone = $request->phone;
-        
+
                  }
 
                  $oldcartitems = Cart::where('email',Auth::user()->email)->get();

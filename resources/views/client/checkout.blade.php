@@ -79,17 +79,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <!-- <div class="form-group">
-                                            <div class="form-check">
-                                            <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
-                                            <label class="form-check-label" for="invalidCheck3">
-                                                Agree to terms and conditions
-                                            </label>
-                                            <div class="invalid-feedback">
-                                                You must agree before submitting.
-                                            </div>
-                                            </div>
-                                        </div> -->
+
                                         <br>
 
                                         <br>
@@ -113,6 +103,7 @@
                                         </tr>
 
                                     </thead>
+                                    @php  $total = 0; @endphp
                                     <tbody>
                                     @foreach($data as $item)
                                         <tr>
@@ -120,11 +111,12 @@
                                         <td>{{$item->item_qty}}</td>
                                         <td>{{$item->laundrys->price}}</td>
                                         </tr>
+                                        @php  $total += $item->laundrys->price  * $item->item_qty ; @endphp
                                     @endforeach
                                     </tbody>
                                     <hr>
                                     <tr>
-                                        <th scope="col">Total</th>
+                                        <th scope="col">Total:{{    $total}}(NGN)</th>
                                     </tr>
                                 </table>
                                     </div>
