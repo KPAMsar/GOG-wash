@@ -53,8 +53,8 @@
                         <div class="card-header">
                             <div>
 
-                            <table class="table " >
-                                    <thead class="thead-dark">
+                            <table class="table  table-responsive" >
+                                    <thead  style="background-color:#063464; color:white;">
                                         <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Item</th>
@@ -100,9 +100,11 @@
 
                                     </tbody>
                             </table>
+                                @if($addtocart > 0)
+                                <a href="{{route('client.laundry-cart')}}"><button type="button" class="btn" style="background-color:#063464; color:white;" >Proceed</button></a>
 
+                                @endif
                             <div>
-                            <a href="{{route('client.laundry-cart')}}"><button type="button" class="btn btn-primary">Proceed</button></a>
 
                             </div>
 

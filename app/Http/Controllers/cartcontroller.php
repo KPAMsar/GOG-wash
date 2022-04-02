@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\DB;
 class cartcontroller extends Controller
 {
     public function index(){
+        $addtocart = Cart::where('email','=',Auth::user()->count() > 0);
         $data = laundry::all();
-        return view('client.cartitems',['data'=>$data]);
+        return view('client.cartitems',[
+            'data'=>$data,
+            'addtocart'=>$addtocart
+
+        ]);
     }
     public function addtocart(Request $request){
 
@@ -45,7 +50,7 @@ class cartcontroller extends Controller
 
     }
     public function addtocartt(Request $request, $id){
-        
+
          $item = $request->item_id;
         //   $price =laundry::find($id,['price']);
          $item_qty = $request-> item_quantity_;

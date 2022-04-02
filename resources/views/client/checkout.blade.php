@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 65rem;">
+    <div class="card table-responsive" style="width: 65rem;">
                         <div class="card-header">
                             <div class="container">
                                 <div class="row">
@@ -87,13 +87,13 @@
 
                                 <div class="col-md-4 card">
                                 <div style="padding-top:10px;">
-                                    <h5 class="dashboard-wel text-center" >ORDER DETAILS</h5>
+                                    <h5 class="dashboard-wel text-center"  >ORDER DETAILS</h5>
 
                                 </div>
                                     <div >
-
-                                    <table class="table table-borderless ">
-                                    <thead>
+                                        <div class="table-responsive">
+                                        <table class="table table-borderless ">
+                                    <thead style="background-color:#063464; color:white;" >
 
 
                                         <tr>
@@ -115,17 +115,31 @@
                                     @endforeach
                                     </tbody>
                                     <hr>
+                                    @if($data->count() > 0)
                                     <tr>
                                         <th scope="col">Total:{{    $total}}(NGN)</th>
+                                        <div>
+                                             <button class="btn" type="submit" style="background-color:#063464; color:white;" >Checkout</button>
+                                         </div>
+
                                     </tr>
+
+
+
+
+                                    @endif
                                 </table>
+                                        </div>
+
+
+
                                     </div>
 
 
                                     <br>
-                                <div>
-                                    <button class="btn btn-primary" type="submit">Checkout</button>
-                                </div>
+
+
+
 
                                 </form>
                             </div>
@@ -134,6 +148,9 @@
                         <br>
 
                     </div>
+                    @Session::put('key', $total)
+
+                    @endsession
         </div>
 
     </div>

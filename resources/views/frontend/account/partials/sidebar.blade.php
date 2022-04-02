@@ -18,7 +18,7 @@
   <li class="nav-item ">
 
     <a class="nav-link" href="{{ route('client.dashboard') }}">
-   <i class="fa fa-tachometer" aria-hidden="true"></i>
+   <i class="fa fa-home" aria-hidden="true"></i>
       <span ><h class="dashboard">Home</h></span></a>
   </li>
 

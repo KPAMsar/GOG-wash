@@ -23,34 +23,12 @@
 
 
 		</div>
-		<div class="col-xl-9 col-md-12 ">
-        <div class="card border-left-prima shadow h-100 py-2 cab-1">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
-
-
-						</div>
-
-
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-
-
-
-                                    </div>
-                                    </div>
-
-                                </div>
-                        </div>
-
-                        <div class="card" style="width: 45rem;">
+        <div class="card" style="width: 45rem;">
                         <div class="card-header">
                             <div class="container">
-                                <div class="row">
+                                <div class="row table-responsive">
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead style="background-color:#063464; color:white;">
                                         <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Items</th>
@@ -94,20 +72,31 @@
 
                                     </tbody>
 
+
+
+
                                     @endforeach
+
+                                    @if($data->count()> 0   )
+
+                                    <a href="{{route('client.checkout')}}"><button type="button" class="btn" style="background-color:#063464; color:white;">Proceed</button></a>
+
+                                    @else
+
+                                    <tr><th scope="col">No items in the laundry cart</th></tr>
+                                    @endif
 
                                     <div>
                                     <!-- <tr><th scope="col">SUB-TOTAL</th></tr>
                                     <tr><th scope="col">VAT</th></tr> -->
                                     <hr>
-                                        <tr><th scope="col">TOTAL</th></tr>
+
 
                                     <hr>
 
                                     </div>
 
                                 </table>
-                                <a href="{{route('client.checkout')}}"><button type="button" class="btn btn-primary">Proceed</button></a>
 
 
                                 </div>
@@ -120,7 +109,6 @@
 
 
         </div>
-
 
 
 

@@ -30,31 +30,15 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
-
-
-						</div>
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-
-
-
-                                    </div>
-                                    </div>
-
-                                </div>
-                        </div>
-
-                        <div class="card " style="width: 45rem;">
-                        <div class="card-header">
-
-                            <div  class=""style="">
                             <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                                     <div class="row" style="margin-bottom:40px;">
                                         <div class="col-md-8 col-md-offset-2">
                                             <p>
                                                 <div style="text-align:center;">
+
+
                                                     You are about to make a lundry payment   of
-                                                    ₦ 2,950
+                                                    777
                                                 </div>
                                             </p>
 
@@ -85,27 +69,25 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                                                    <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
+                                    <button class="btn  btn-lg btn-block" type="submit" value="Pay Now!" style="background-color:#063464; color:white;">
+                                                    <i class="fa fa-plus-circle fa-lg"></i> Pay  Now!
                                                 </button>
 
-                            <button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location.href='{{route('client.paywithcash')}}'" value="Pay Now!">
-                                                    <i class="fa fa-plus-circle fa-lg"></i> Pay with cash!
-                            </button>
+                                    <button class="btn  btn-lg btn-block" type="button" onclick="window.location.href='{{route('client.paywithcash')}}'" value="Pay Now!" style="background-color:#063464; color:white;">
+                                                            <i class="fa fa-money fa-lg"></i> Pay with cash!
+                                    </button>
 
-                            <button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location.href='{{route('client.paywithcrypto')}}'" value="Pay Now!">
-                                                    <i class="fa fa-plus-circle fa-lg"></i> Pay with Crypto!
-                            </button>
+                                    <button class="btn btn-lg btn-block" type="button" onclick="window.location.href='{{route('client.paywithcrypto')}}'" value="Pay Now!" style="background-color:#063464; color:white;">
+                                                            <i class="fab fa-bitcoin fa-lg"></i> Pay with Crypto!
+                                    </button>
 
 
                             </form>
 
                             </div>
+						</div>
 
-                            </div>
 
-                        <br>
-                    </div>
 
 
 

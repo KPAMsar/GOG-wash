@@ -137,16 +137,17 @@ class requestController extends Controller
 
 
              $cartitems = Cart::where('email', Auth::user()->email)->get();
-        foreach($cartitems as $item)
-                {
+         foreach($cartitems as $item)
+                 {
                 orderItems::create([
                     'request_id'=> $data->request_id,
                     'item_id'=> $item->item_id,
                     'price'=>$item->item_qty,
                     'item_qty'=> $item->laundrys->price,
+                    'total'=>
                 ]);
 
-                 }
+                  }
 
 
                  if(Auth::user()->address == NULL){

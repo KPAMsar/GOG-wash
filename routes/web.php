@@ -190,6 +190,7 @@ Route::get('pay-with-cash',[checkoutController::class, 'payWithCash'])->name('cl
 
 
 Route::post('q',[requestController::class, 'placeRequest'])->name('q');
-Route::get('points',[pointsController::class, 'index'])->name('q');
+Route::get('points',[pointsController::class, 'index'])->name('gogpoints.show');
+Route::post('points',[pointsController::class, 'save'])->name('gogpoints.request');
 
 
