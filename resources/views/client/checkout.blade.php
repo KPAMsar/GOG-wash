@@ -13,7 +13,7 @@
 
     <div>
         <div>
-            <h5 class="dashboard-wel text-center" >LAUNDRY ORDER</h5>
+            <h5 onload="myFunction()" class="dashboard-wel text-center" >LAUNDRY ORDER</h5>
 
         </div>
     </div>
@@ -23,7 +23,7 @@
                             <div class="container">
                                 <div class="row">
 
-                                <div class="col-md-8">
+                                <div class="col-md-7">
 
                                      <form method="post" action="{{route('q')}}"  >
                                      @csrf
@@ -39,7 +39,7 @@
                                                 Please provide a valid city.
                                             </div>
                                             </div>
-                                            <div class="col-md-6 mb-3">
+                                            <div class="col-md-5 mb-3">
                                             <label for="validationServer03">Last Name</label>
                                             <input type="text" class="form-control " name="lastname" value="{{Auth::user()->lastname}}"id="validationServer03" placeholder="City" readonly>
                                             <div class="invalid-feedback">
@@ -111,15 +111,38 @@
                                         <td>{{$item->item_qty}}</td>
                                         <td>{{$item->laundrys->price}}</td>
                                         </tr>
-                                        @php  $total += $item->laundrys->price  * $item->item_qty ; @endphp
+                                        @php
+                                         $total += $item->laundrys->price  * $item->item_qty ;
+
+                                        @endphp
                                     @endforeach
                                     </tbody>
-                                    <hr>
-                                    @if($data->count() > 0)
-                                    <tr>
-                                        <th scope="col">Total:{{    $total}}(NGN)</th>
-                                        <div>
-                                             <button class="btn" type="submit" style="background-color:#063464; color:white;" >Checkout</button>
+                                    <hr ">
+
+                                </table>
+                                <hr>
+
+                                @if($data->count() > 0)
+
+                                @php
+                                $vat =     0.005 * $total;
+                                $totalamount = $vat + $total
+
+                                @endphp
+
+
+                                <tr>
+                                <th scope="col"><b>Sub-Total:</b>(NGN){{    $totalamount}}.00</th><br>
+                                <th scope="col"><b>VAT</b>:(NGN){{ 0.005 *   $totalamount}}</th><br>
+                                <hr>
+                                <th scope="col"><b>Total:</b>{{    $totalamount}}(NGN)</th><br><br>
+
+                                </tr>
+                                                               <tr>
+
+                                         <div>
+
+                                             <button class="btn checkout_btn" type="submit" style="background-color:#063464; color:white;" >Checkout</button>
                                          </div>
 
                                     </tr>
@@ -128,7 +151,6 @@
 
 
                                     @endif
-                                </table>
                                         </div>
 
 
@@ -148,9 +170,7 @@
                         <br>
 
                     </div>
-                    @Session::put('key', $total)
 
-                    @endsession
         </div>
 
     </div>

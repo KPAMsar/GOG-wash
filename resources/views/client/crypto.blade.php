@@ -31,8 +31,14 @@
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
                             <div>
-                                Send your crpto here and call for confirmation.<br>
-                                Bitcoin address:
+
+                                <form action="{{route('paywithcrypto')}}" method="POST">
+                                    @csrf
+                                    Send your crpto here and call for confirmation.<br>
+                                    Bitcoin address:
+                                    <br><br><button class="btn btn-primary" style="background-color:#063464; color:white;" onclick="" type="submit">Accept</button>
+
+                                </form>
                             </div>
 
 						</div>

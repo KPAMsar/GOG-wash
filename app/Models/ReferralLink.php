@@ -24,7 +24,8 @@ class ReferralLink extends Model
 
     private function generateCode()
     {
-        $this->code = (string)Uuid::uuid1();
+        // $this->code = (string)Uuid::uuid1();
+         $this->code = Auth::user()->ref;
     }
 
     public static function getReferral($user, $program)

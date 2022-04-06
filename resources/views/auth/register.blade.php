@@ -37,6 +37,7 @@
                     <button class="close" data-dismiss="alert">&times;</button>
                   </div>
                 @endif
+
                 <div class="form-group">
                   <input type="text" class="form-control form-control-user"  value="" name="firstname" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="First Name" autofocus required>
 
@@ -58,7 +59,7 @@
 
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user " value="" name="ref" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Referal Code(Optional)" autofocus>
+                  <input type="text" class="form-control form-control-user " value="" name="referal" id="referenceInputField" aria-describedby="emailHelp" placeholder="Referal Code(Optional)" autofocus>
 
                 </div>
 
@@ -92,7 +93,20 @@
   </div>
 
   @include('_includes.foot')
+  <script>
+      console.log(window.location.href);
+      console.log(document.getElementById('referenceInputField'));
+      let currentAddress = window.location.href;
+      let containsRef = false;
+      let searchAddress = currentAddress.match(/ref=.*/gi);
+      if(searchAddress.length != 0 && searchAddress[0].length >= 7) containsRef = true;
+      if(containsRef){
+          let refInputElement = document.getElementById('referenceInputField');
+          refInputElement.value = searchAddress[0].replace("ref=", "");
+          refInputElement.disabled = true;
+      }
 
-</body>
+  </script>
+  </body>
 
 </html>

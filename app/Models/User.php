@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role',
         'password',
         'ref',
+        'points',
     ];
 
     /**
@@ -46,9 +47,9 @@ class User extends Authenticatable
     ];
 
     public function getReferrals()
-{
-    return ReferralProgram::all()->map(function ($program) {
-        return ReferralLink::getReferral($this, $program);
-    });
-}
+    {
+        return ReferralProgram::all()->map(function ($program) {
+            return ReferralLink::getReferral($this, $program);
+        });
+    }
 }

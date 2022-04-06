@@ -15,6 +15,15 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('laundry_request_id');
+            $table->string('email');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('phone');
+            $table->string('amount');
+            $table->string('mode_of_payment');
+            $table->string('payment_staus');
+            $table->string('reference_no');
             $table->timestamps();
         });
     }

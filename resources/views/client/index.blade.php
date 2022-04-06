@@ -14,15 +14,11 @@
 			<button class="close" data-dismiss="alert">&times;</button>
 		</div>
 	@endif
-    <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
+    @if(Session::has('fail'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+    @endif
 
-    </div>
 
 
     <div>
@@ -86,11 +82,11 @@
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             <span ><h class="dashboard" style="color:white;" > GOG POINTS</h></span></div>
                             <div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard" style="color:white;">######</h></span>
+                            <span ><h class="dashboard" style="color:white;">{{$gogpoints}}</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
-							<i class="fa fa-level-up fa-2x text-gray-300"></i>
+							<i class="fa fa-trophy fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
@@ -107,8 +103,9 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="dashboard" style="color:white;" >LAUNDRY STATUS</h></span></div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800" style="color:white;">5</div>
+                            <span ><h class="dashboard" style="color:white;" >REFERAL CODE</h></span></div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800" style="color:white;">
+                            <span ><h class="dashboard" style="color:white;">{{$referal_code}}</h></span></div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -136,7 +133,7 @@
   </div>
 </div>
         </div>
-        </div>
+        </>
 
 
 

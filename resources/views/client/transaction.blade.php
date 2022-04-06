@@ -1,5 +1,4 @@
-
-@extends('_layouts.tables')
+@extends('frontend.account.layouts.tables')
 
 @section('title', '')
 
@@ -12,7 +11,7 @@
 	@endif
 
     <div>
-            <h5 class="dashboard-wel text-center" >Customers</h5>
+            <h5 class="dashboard-wel text-center" >Transaction Summary</h5>
     </div>
 
         <div class="container">
@@ -30,45 +29,36 @@
                     <div>
                         <h5 class="dashboard-wel text-center" ></h5>
                     </div>
-                        <a href="{{route('customers.create')}}" class="btn btn-sm btn-primary">Add</a>
+                        <!-- <a href="{{ route('admin.admin_staff_show') }}" class="btn btn-sm btn-primary">Add</a> -->
                     </div>
                     </div>
 
                     <div class="table-responsive">
                     <table id="table_id" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>S/N</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email Address</th>
-                        <th>Action</th>
+                      <tr>
+                        <th>#</th>
+                        <th>Reference Number</th>
+                        <th>Amount(NGN)</th>
+                        <th>Payment Status</th>
+                        <th>Mode of payment</th>
+                        <th>Date</th>
 
                     </tr>
                 </thead>
 
 
                 <tbody>
-                    @foreach($req as $req)
-                    <tr>
-                        <td>{{$re-> request_id}}</td>
-                        <td>{{$re-> email}}</td>
-                        <td>{{$re-> lastname}}</td>
-                        <td>{{$re-> created_at}}</td>
-
-                        <td><a href="{{url('admin/edit-customers/'.$item->id)}}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                        <a href="{{url('admin/delete-customers/'.$item->id)}}"> <button  class="btn btn-sm btn-danger">
-
-                        <i class="fa fa-trash"></i>
-                        </button>
-                        </a>
-
-						</td>
-                    </tr>
+                    @foreach($transaction_summary as $transaction)
+                        <tr>
+                                <td>{{$transaction -> id}}</td>
+                                <td>{{$transaction -> reference_no}}</td>
+                                <td>{{$transaction -> amount/ 100}}</td>
+                                <td>{{$transaction -> payment_staus}}</td>
+                                <td>{{$transaction -> mode_of_payment}}</td>
+                                <td>{{$transaction -> created_at}}</td>
+                        </tr>
                     @endforeach
-
-
-
                 </tbody>
 
             </table>
@@ -91,7 +81,11 @@
   </div>
 </div>
 </div>
- </div>
+            </div>
+
+
+
+
 
 <br><br><br><br>
 

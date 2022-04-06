@@ -39,6 +39,12 @@ class requestController extends Controller
 
     public function sendSmsToSimBank(String $message, String $phone_num)
     {
+
+        $firstname = Auth::user()-> firstname;
+        $lastname = Auth::user()-> lastname;
+        $email = Auth::user()-> email;
+        $phone_number =laundry_request::where('email','=',Auth::user()->email)->get('phone')->first();
+
         try {
             $client = new Client(
                 [
@@ -50,7 +56,7 @@ class requestController extends Controller
             );
             $req= $data = new laundry_request;
             $phone_num="2349161814905";
-            $message=" Helllooo you have a laundry request from you can reach him through" ;
+            $message=" Helllooo you have a laundry request from $firstname   $lastname. You can reach customer through  $email or $phone_number .Thank you." ;
 
             // $phone_num represents the destination phone number. Phone number must be in the international
             // format (Example: 23490126727). You can also send to multiple numbers. To do that put numbers
@@ -59,7 +65,7 @@ class requestController extends Controller
 
             "sms"=>$message,"type" => "plain","channel" => "generic","api_key" => "TLcLnChh9cq51M92Pkd7YqXDIZbehEtenBwrNloleOir9YgWgy71viGMJnOv8w");
 
-            echo "point 2";
+
 
 
             $data = $client->post(
@@ -127,6 +133,7 @@ class requestController extends Controller
              $data ->email = Auth::user()->email;
              $data->address =$request->address;
              $data->status = 0;
+             $data->total= '1';
 
              $data->phone = $request->phone;
 
@@ -137,14 +144,15 @@ class requestController extends Controller
 
 
              $cartitems = Cart::where('email', Auth::user()->email)->get();
-         foreach($cartitems as $item)
+                foreach($cartitems as $item)
                  {
                 orderItems::create([
+                    'email'=> Auth::user()->email,
                     'request_id'=> $data->request_id,
                     'item_id'=> $item->item_id,
-                    'price'=>$item->item_qty,
-                    'item_qty'=> $item->laundrys->price,
-                    'total'=>
+                    'price'=>$item->laundrys->price,
+                    'item_qty'=> $item->item_qty,
+
                 ]);
 
                   }
@@ -186,7 +194,7 @@ class requestController extends Controller
          if($req){
 
 
-            //  $this->sendSmsToSimBank('' ,  '');
+             // $this->sendSmsToSimBank('' ,  '');
 
 
 

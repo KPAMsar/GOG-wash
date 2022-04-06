@@ -15,31 +15,35 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script type="text/javascript">
-      var incrementItemID_Z9 = (e) => {
+      var incrementItemID_Z9 = (e, id) => {
+          id = 'qty-id-' + id;
+        //   console.log(id);
     e.preventDefault();
-            // var inc_value = $('.qty-input').val();
-            var inc_value = $(this).closest('laundry_data').find('.qty-input').val();
+             var inc_value = $('#' + id).val();
+            // var inc_value = $(this).closest('laundry_data').find('#' + id).val();
             var value = parseInt(inc_value);
             value = isNaN(value) ? 0:value;
 
             // if(value < 10){
                 value++;
-                // $('.qty-input').val(value);
-                $(this).closest('laundry_data').find('.qty-input').val();
+                 $('#' + id).val(value);
+                // $(this).closest('laundry_data').find('#' + id).val();
             // }
     }
 
-    var decrementItemID_Z9 = (e) => {
+    var decrementItemID_Z9 = (e, id) => {
+        id = 'qty-id-' + id;
+        // console.log(id);
     e.preventDefault();
-            // var inc_value = $('.qty-input').val();
-            var inc_value = $(this).closest('laundry_data').find('.qty-input').val();
+             var inc_value = $('#' + id).val();
+            // var inc_value = $(this).closest('laundry_data').find('#' + id).val();
             var value = parseInt(inc_value);
             value = isNaN(value) ? 0:value;
 
              if(value > 0){
                 value--;
-                // $('.qty-input').val(value);
-                $(this).closest('laundry_data').find('.qty-input').val();
+                 $('#' + id).val(value);
+                // $(this).closest('laundry_data').find('#' + id).val();
             }
     }
 

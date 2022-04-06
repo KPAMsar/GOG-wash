@@ -63,8 +63,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                <p class="card-text">AVAILABLE GOG POINTS</p>
-               <h class="dashboard-wel"> 600</h>
+                <p class="card-text"style=" color:#063456;">AVAILABLE GOG POINTS</p>
+               <h class="dashboard-wel" style="font-size:4em; color:#063456;"> {{$gogpoints}}</h>
 
                 </div>
                 <div class="col-md-6">

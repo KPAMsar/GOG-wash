@@ -192,5 +192,14 @@ Route::get('pay-with-cash',[checkoutController::class, 'payWithCash'])->name('cl
 Route::post('q',[requestController::class, 'placeRequest'])->name('q');
 Route::get('points',[pointsController::class, 'index'])->name('gogpoints.show');
 Route::post('points',[pointsController::class, 'save'])->name('gogpoints.request');
+Route::post('pay-with-cash',[paymentController::class, 'payWithCash'])->name('paywithcash');
+Route::post('pay-with-crypto',[paymentController::class, 'payWithCrypto'])->name('paywithcrypto');
+Route::post('pay-with-points',[paymentController::class, 'paywithpoints'])->name('paywithpoints');
+
+Route::get('pay-with-points',[checkoutController::class, 'showpayWithPoints'])->name('paywithpoints');
+
+Route::PUT('laundry-cart',[cartcontroller::class, 'update'])->name('updatenewcart');
+Route::get('test',[pointsController::class, 'checkPoints'])->name('updatenewcart');
+
 
 

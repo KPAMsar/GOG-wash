@@ -61,7 +61,7 @@
  <!-- Nav Item - Transactions -->
  <li class="nav-item ">
 
-<a class="nav-link" href="#">
+<a class="nav-link" href="{{route('client.transactions')}}">
  <i class="fa fa-money" aria-hidden="true"></i>
   <span ><h class="dashboard">Transactions</h></span></a>
 </li>

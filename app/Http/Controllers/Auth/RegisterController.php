@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\point;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -58,6 +59,16 @@ class RegisterController extends Controller
         ]);
     }
 
+
+    public function referalSystem(Request $request){
+        $referal = $request->referal;
+        if($referal ==TRUE && User::where($referal,'=','ref')){
+            dd('true');
+        }
+
+    }
+
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -68,19 +79,38 @@ class RegisterController extends Controller
     {
         $referrer = User::whereEmail(session()->pull('referrer'))->first();
 
-         return User::create([
+         $reg= User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'role' => 0,
 
-            'ref' => $referrer ? $referrer->id : null,
+            'ref' => 'gogref'.rand(00000 , 999999),
             'password' => Hash::make($data['password']),
+
+
         ]);
-        event(new UserReferred(request()->cookie('ref'), $user));
-        return $user;
+        $referal = $data['referal'];
+
+        if($reg){
+
+
+            $fact = User::where('ref','=',$referal)->exists();
+            if($fact ){
+            $creatingPoints = point::create([
+                    'email' => $data['email'],
+                   'referal'=> $referal,
+                   'points' => '0',
+
+                ]);
+            }
+
+        }
+        //  event(new UserReferred(request()->cookie('ref'), $user));
+          return $reg;
 
 
 
     }
+
 }

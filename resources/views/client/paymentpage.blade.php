@@ -34,11 +34,14 @@
                                     <div class="row" style="margin-bottom:40px;">
                                         <div class="col-md-8 col-md-offset-2">
                                             <p>
-                                                <div style="text-align:center;">
+                                                <div style="text-align:center; color:##063464">
+
+                                                <h style="text-align:center; color:#063464; font-size:15px;">
+                                                You are about to make a  payment   of
+                                                    {{$amount + 12}} Naira.Do you want to proceed?
+                                                </h>
 
 
-                                                    You are about to make a lundry payment   of
-                                                    777
                                                 </div>
                                             </p>
 
@@ -47,7 +50,7 @@
                                             <input type="hidden" name="email" value="{{Auth::user()->email}}"> {{-- required --}}
                                             <input type="hidden" name="first_name" value="{{Auth::user()->firstname}}"> {{-- required --}}
                                             <input type="hidden" name="orderID" value="345">
-                                            <input type="hidden" name="amount" value="800"> {{-- required in kobo --}}
+                                            <input type="hidden" name="amount" value=" {{$amount * 100}}.00"> {{-- required in kobo --}}
                                             <input type="hidden" name="quantity" value="1">
                                             <input type="hidden" name="currency" value="NGN">
                                             <input type="hidden" name="metadata" value="{{ json_encode($array = [
@@ -80,6 +83,19 @@
                                     <button class="btn btn-lg btn-block" type="button" onclick="window.location.href='{{route('client.paywithcrypto')}}'" value="Pay Now!" style="background-color:#063464; color:white;">
                                                             <i class="fab fa-bitcoin fa-lg"></i> Pay with Crypto!
                                     </button>
+
+
+
+
+
+
+                                        <button class="btn btn-lg btn-block" type="button" onclick="window.location.href='{{route('paywithpoints')}}'" value="Pay Now!" style="background-color:#063464; color:white;">
+                                                            <i class="fa fa-trophy fa-lg"></i>  GOG Points
+                                        </button>
+
+
+
+
 
 
                             </form>

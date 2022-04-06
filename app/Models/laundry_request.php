@@ -18,6 +18,7 @@ class laundry_request extends Model
         'status',
         'payment_status',
         'phone',
+        'total',
 
 
     ];

@@ -31,9 +31,13 @@
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold dashboard-danger text-uppercase mb-1">
                             <div>
-                                Our customer care service will get in contact with you.
-                                <br><br><button class="btn btn-primary"  onclick="" type="submit">Accept</button>
-                               
+                                <form action="{{route('paywithcash')}}" method="POST">
+                                    @csrf
+                                    Our customer care service will get in contact with you.
+                                    <br><br><button class="btn btn-primary"  onclick="" type="submit" style="background-color:#063464; color:white;">Accept</button>
+
+                                </form>
+
                             </div>
 
 						</div>

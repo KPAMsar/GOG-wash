@@ -27,7 +27,9 @@
                         <div class="card-header">
                             <div class="container">
                                 <div class="row table-responsive">
-                                <table class="table table-hover">
+
+
+                                    <table class="table table-hover">
                                     <thead style="background-color:#063464; color:white;">
                                         <tr>
                                         <th scope="col">#</th>
@@ -38,26 +40,28 @@
                                         </tr>
                                     </thead>
 
-                                    @foreach($data as $item)
+                                    @foreach($data as $key => $item)
                                     <tbody>
+
                                         <tr>
 
                                         <th scope="row">
                                         <li><span class="fa-li"><i class="fa-solid fa-check-square"></i></span></li>
                                         </th>
                                         <td>{{$item->item_id}}</td>
-                                        <td>
+                                        <!-- <td>
                                         <div class="input-group text-center mb-3" style="width:130px;">
-                                            <button type="button" onclick="decrementItemID_Z9(event)"  class="input-group-text decrement-btn">-</button>
+                                            <button type="button" onclick="decrementItemID_Z9(event,  {{ $key }})"  class="input-group-text decrement-btn">-</button>
 
 
-                                            <input type="text" name="item_quantity " class="form-control  qty-input text-center  item_qty" value="1" style="width: 55px;">
+                                            <input type="text" id="{{ 'qty-id-'.$key }}"  name="item_quantity " class="form-control  qty-input text-center  item_qty" value="{{$item->item_qty  }}" style="width: 55px;">
 
 
-                                            <button type="button" onclick="incrementItemID_Z9(event)" class="input-group-text increment-btn">+</button>
+                                            <button type="button"  onclick="incrementItemID_Z9(event,  {{ $key }})" class="input-group-text increment-btn">+</button>
                                         </div>
 
-                                        </td>
+                                        </td> -->
+                                        <td>{{$item->item_qty  }}</td>
                                         <td>{{$item->item_id }}</td>
                                         <td><button  class="btn btn-sm btn-danger">
 
@@ -77,14 +81,7 @@
 
                                     @endforeach
 
-                                    @if($data->count()> 0   )
 
-                                    <a href="{{route('client.checkout')}}"><button type="button" class="btn" style="background-color:#063464; color:white;">Proceed</button></a>
-
-                                    @else
-
-                                    <tr><th scope="col">No items in the laundry cart</th></tr>
-                                    @endif
 
                                     <div>
                                     <!-- <tr><th scope="col">SUB-TOTAL</th></tr>
@@ -97,6 +94,17 @@
                                     </div>
 
                                 </table>
+                                    @if($data->count()> 0   )
+                                    <a href="{{route('client.checkout')}}"><button type="buttun" class="btn" style="background-color:#063464; color:white;">Proceed</button>
+                                    </a>
+
+                                    @else
+
+                                    <tr><th scope="col">No items in the laundry cart</th></tr>
+                                    @endif
+
+
+
 
 
                                 </div>

@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         UserReferred::class => [
-         RewardUser::class,
+            RewardUser::class,
         ]
     ];
 

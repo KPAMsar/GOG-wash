@@ -54,18 +54,19 @@ class cartcontroller extends Controller
          $item = $request->item_id;
         //   $price =laundry::find($id,['price']);
          $item_qty = $request-> item_quantity_;
-        if(Auth::check()){
+         $item_check =laundry::where($item,'=','item');
+        if(Auth::check() &&  $item_check ){
 
-            $item_check = cart::where('item_id','=',$item) && Cart::where('email','=',Auth::user()->email)->first();
-            if($item_check){
-                return back()->with('success','Already inside the laundry cart' );}
+            $cart_check = cart::where('item_id',$item)->where('email',Auth::user()->email)->first();
+            if($cart_check){
+                return back()->with('fail','Item is already added to the laundry cart' );}
             else{
 
-                $data = new cart;
-           $data ->email = Auth::user()->email;
-           $data ->item_qty = $item_qty;
-           $data ->item_id = $request->item_id;
-           $save = $data -> save();
+            $data = new cart;
+            $data ->email = Auth::user()->email;
+            $data ->item_qty = $item_qty;
+            $data ->item_id = $request->item_id;
+            $save = $data -> save();
 
            if( $save){
                return back()->with('success', 'Item added to your laundry cart successfuly.');
@@ -84,9 +85,14 @@ class cartcontroller extends Controller
     }
 
     public function cart(){
+        $val = Cart::where('email',Auth::user()->email )->get('item_qty');
         $data = Cart::where('email',Auth::user()->email )->get();
 
-         return view('client.cart',['data'=>$data]);
+         return view('client.cart',[
+             'data'=>$data,
+             'val'=> $val,
+
+        ]);
     }
 
 
@@ -96,6 +102,24 @@ class cartcontroller extends Controller
         return back()->with('success','Item removed from cart succesfully');
     }
 
+    public function update(Request $request){
+        $newquantity = Cart::where('email',Auth::user()->email )->get();
+
+
+
+            //  $data = new cart;
+            //  $data ->email = Auth::user()->email;
+            //  $data ->item_qty = $request->item_quantity_;
+            //  $data ->item_id = $request->item_id;
+            //  $save = $data -> update();
+
+
+
+            // dd($request);
+
+        // dd($data);
+          return redirect()->route('client.checkout');
+    }
 
 
 

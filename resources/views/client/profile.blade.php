@@ -39,7 +39,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-9 col-sm-12">
-                                    <h5 class="dashboard-wel">Data </h5>
+                                    <h5 class="dashboard-wel" style="color:#063464;">Data </h5>
                                     </div>
                                     <div class="col-md-3 col-sm-12">
                                     <a href="{{url('client/edit-profile/'.Auth::user()-> id)}}" class="btn " style="background-color:#063464; color:white;">Update profile</a>
@@ -49,33 +49,29 @@
 
                         </div>
                         <div class="col-md-9 col-sm-6">
-                        <ul class="list-group list-group-flush">
+                        <ul class="list-group list-group-flush" style="color:#063464;">
                             <li class="list-group-item" <h>First Name:{{Auth::user()->firstname}} </h5></li>
                             <li class="list-group-item"<h">Lastname:{{  Auth::user()->lastname}}</h5></li>
                             <li class="list-group-item"><h>Email:{{Auth::user()->email}}</h></li>
                             <li class="list-group-item"><h>Phone number:{{Auth::user()->phone}}</h5></li>
                             <li class="list-group-item"><h>Address:{{Auth::user()->address}}</h5></li>
 
-                            @forelse(auth()->user()->getReferrals() as $referral)
+                            <li class="list-group-item"><h>Referal code:{{Auth::user()->ref}}</h5></li>
+                            <li class="list-group-item"><h>Number of Referals:{{$gogreferalscount}} Referals</h5></li>
 
-                                <code>
-                                <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel" style="font-size:15px;">Referal Link:{{ $referral->link }}</h5></li>
-
-                                </code>
-                                <p>
-                                <li class="list-group-item"><h5 class="profile-wel"><h5 class="profile-wel">Number of referred users: {{ $referral->relationships()->count() }}</h5></li>
+                            <li class="list-group-item"><h>Points Earned:{{$gogpoints}}</h5></li>
 
 
-                                </p>
-                            @empty
-                                <h>Referals:Nill</h>
-                            @endforelse
 
                             <!-- <li class="list-group-item"><h5 class="profile-wel"> <h5 class="profile-wel">Referal Code:GOG001</h5></li> -->
                         </ul>
                          </div>
 
                                     </div>
+                                    </div>
+
+                                    <div>
+
                                     </div>
 
                                 </div>
@@ -110,3 +106,7 @@
 
 
 @endsection
+
+<script>
+    let $url = window.location.href;
+</script>
