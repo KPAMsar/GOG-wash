@@ -49,7 +49,7 @@ class cartcontroller extends Controller
 
 
     }
-    public function addtocartt(Request $request, $id){
+    public function addtocartt(Request $request){
 
          $item = $request->item_id;
         //   $price =laundry::find($id,['price']);
@@ -64,7 +64,9 @@ class cartcontroller extends Controller
 
             $data = new cart;
             $data ->email = Auth::user()->email;
-            $data ->item_qty = $item_qty;
+            // $data ->item_qty = $item_qty;
+            $data ->item_qty = $request->item_quantity;
+            // $data ->item_id = $request->item_id;
             $data ->item_id = $request->item_id;
             $save = $data -> save();
 

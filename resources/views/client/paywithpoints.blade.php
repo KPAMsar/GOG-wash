@@ -41,11 +41,10 @@
 
                                             </div>
                                             <div class="col-md-6">
-                                                @php
 
-                                                @endphp
                                             <p class="card-text">AVAILABLE GOG POINTS</p>
-                                            <a href="{{route('gogpoints.show')}}" class="btn " style="background-color:#063464; color:white;">PAY WITH POINTS</a>
+
+                                            <button class="btn" type="submit" style="background-color:#063464; color:white;"> PAY WITH POINTS </button>
                                             </div>
                                         </div>
                                     </div>

@@ -80,9 +80,9 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="dashboard" style="color:white;" > GOG POINTS</h></span></div>
+                            <span ><h class="dashboard" style="color:white;" > AVAILABLE POINTS</h></span></div>
                             <div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="dashboard" style="color:white;">{{$gogpoints}}</h></span>
+                            <span ><h class="dashboard" style="color:white;">{{ $available_points}}</h></span>
                         </div>
 						</div>
 						<div class="col-auto">
@@ -114,6 +114,8 @@
 				</div>
 			</div>
 		</div> <br>
+
+
 	</div>
         <div>
 

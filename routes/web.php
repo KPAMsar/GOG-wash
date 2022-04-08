@@ -164,7 +164,7 @@ Route::group(['prefix'=>'client','middleware'=>'clientMiddleware','auth'], funct
     Route::get('delete-laundry-item/{id}',[cartcontroller::class, 'remove']);
     Route::get('checkout',[checkoutController::class, 'index'])->name('client.checkout');
 
-
+    Route::post('add-to-cart',[cartcontroller::class, 'addtocartt']);
 
 });
 Route::get('item-list',[requestController::class, 'itemlist']);
@@ -183,7 +183,7 @@ Route::get('payy',[PaymentController::class, 'index']);
 Route::post('add-to-cart',[cartcontroller::class, 'addtocart']);
 
 // Route::get('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
-Route::post('add-to-cart/{id}',[cartcontroller::class, 'addtocartt']);
+Route::post('add-to-cart',[cartcontroller::class, 'addtocartt']);
 Route::get('payment-page',[checkoutController::class, 'showPaymentPage'])->name('payment.page');
 Route::get('pay-with-crypto',[checkoutController::class, 'payWithCrypto'])->name('client.paywithcrypto');
 Route::get('pay-with-cash',[checkoutController::class, 'payWithCash'])->name('client.paywithcash');
@@ -200,6 +200,10 @@ Route::get('pay-with-points',[checkoutController::class, 'showpayWithPoints'])->
 
 Route::PUT('laundry-cart',[cartcontroller::class, 'update'])->name('updatenewcart');
 Route::get('test',[pointsController::class, 'checkPoints'])->name('updatenewcart');
+
+Route::get('transaction',[adminController::class, 'transaction'])->name('admin.alltransaction');
+
+
 
 
 

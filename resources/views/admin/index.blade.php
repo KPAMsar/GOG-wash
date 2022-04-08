@@ -22,10 +22,10 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            <span ><h class="main-dashboard">Total Laundry</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">Total Laundry</h></span>
                             </div>
 							<div class="font-weight-bold mb-0 h5 text-gray-800">
-                                <span ><h class="main-dashboard">{{$totalcount}}</h></span>
+                                <span ><h class="main-dashboard" style="color:white;">{{$totalcount}}</h></span>
                             </div>
 						</div>
 						<div class="col-auto">
@@ -43,10 +43,10 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            <span ><h class="main-dashboard"> Confirmed </h></span>
+                            <span ><h class="" style="color:white;"> Confirmed </h></span>
                             </div>
 							<div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="main-dashboard">{{$confirmedcount }}</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">{{$confirmedcount }}</h></span>
                             </div>
 						</div>
 						<div class="col-auto">
@@ -64,10 +64,10 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            <span ><h class="main-dashboard">  Delivered</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">  Delivered</h></span>
                            </div>
 							<div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="main-dashboard">{{$deliveredcount}}</h></span> </div>
+                            <span ><h class="main-dashboard" style="color:white;">{{$deliveredcount}}</h></span> </div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-file-invoice fa-2x text-gray-300"></i>
@@ -85,10 +85,10 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="main-dashboard"> Total Users</h></span>
+                            <span ><h class="main-dashboard" style="color:white;"> Total Users</h></span>
                             </div>
 							<div class="font-weight-bold mb-0 h5 text-gray-800">
-                            <span ><h class="main-dashboard">{{$totalusers}}</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">{{$totalusers}}</h></span>
                             </div>
 						</div>
 						<div class="col-auto">
@@ -110,9 +110,11 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            <span ><h class="main-dashboard"> Total Request</h></span>
+                            <span ><h class="main-dashboard"  style="color:white;"> Total Request</h></span>
                             </div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800"></div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800">
+                            <span ><h class="dashboard" style="color:white;">{{ $total_request}}</h></span>
+                            </div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-file-invoice fa-2x text-gray-300"></i>
@@ -129,9 +131,11 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            <span ><h class="main-dashboard">Monthly Income</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">Total Income</h></span>
+
                             </div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800">Rp </div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800" >
+                            <span ><h class="dashboard" style="color:white;">NGN{{ $total_request}}</h></span></div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-money-bill fa-2x text-gray-300"></i>
@@ -148,9 +152,11 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-info text-uppercase mb-1 ">
-                            <span ><h class="main-dashboard">  Monthly Income</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">  Monthly Income</h></span>
                            </div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800"></div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800">
+                                <span ><h class="dashboard" style="color:white;">NGN{{ $total_request}}</h></span>
+                        </div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-file-invoice fa-2x text-gray-300"></i>
@@ -168,9 +174,11 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <span ><h class="main-dashboard">  Monthly Income</h></span>
+                            <span ><h class="main-dashboard" style="color:white;">  TOTAL  POINTS EARNED</h></span>
                             </div>
-							<div class="font-weight-bold mb-0 h5 text-gray-800">Rp </div>
+							<div class="font-weight-bold mb-0 h5 text-gray-800" >
+                            <span ><h class="dashboard" style="color:white;">{{ $total_points}}</h></span>
+                            </div>
 						</div>
 						<div class="col-auto">
 							<i class="fa fa-money-bill-alt fa-2x text-gray-300"></i>

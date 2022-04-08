@@ -31,7 +31,7 @@ class adminStaffController extends Controller
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'role' => 1,
+            'role' => 2,
             'password' => Hash::make($data['password']),
 
         ]);

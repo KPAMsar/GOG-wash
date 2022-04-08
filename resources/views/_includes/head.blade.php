@@ -1,10 +1,14 @@
 <meta charset="utf-8">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+<meta name="_token" content="{{ csrf_token() }}">
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -51,13 +55,15 @@
         e.preventDefault();
         var item_id =$('.item_id').text();
         var item_quantity =$('.item_qty').val();
-        return
 
-         $.ajaxSetup({
-         headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-         }
-         });
+
+        alert(item_id);
+
+        $(function () {
+    $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+    });
+});
         $.ajax({
             type: "post",
             url: "/add-to-cart/{id}",
@@ -68,23 +74,12 @@
                 alert(response.status);
             }
         });
-
-        alert(item_quantity );
-    //     $.ajax({
-    //         url: "/add-to-cart/{id}",
-    //         type: 'POST',
-    //         data: {
-
-    //      item_qty:item_quantity,
-    //  },
-    //         beforeSend: function (request) {
-    //             return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-    //         },
-    //         success: data => {
-    //             console.log(data);
-    //         }
-    //     });
     }
+
+
+
+
+
   </script>
 
 

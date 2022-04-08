@@ -11,6 +11,7 @@ use Paystack;
 use App\Models\transaction;
 use App\Models\orderItems;
 use App\Models\point;
+use App\Models\debited;
 use Auth;
 use App\Models\laundry_request;
 use GuzzleHttp\Client;
@@ -210,7 +211,7 @@ class PaymentController extends Controller
         $saved = $data ->save();
 
         if($saved){
-             $this->sendSmsToSimBank('' ,  '');
+             //$this->sendSmsToSimBank('' ,  '');
             $oldordertitems = orderItems::where('email','=',Auth::user()->email)->delete();
             orderItems::destroy($oldordertitems);
 
@@ -270,7 +271,7 @@ class PaymentController extends Controller
         $saved =$data ->save();
 
         if($saved){
-            $this->sendSmsToSimBank('' ,  '');
+            // $this->sendSmsToSimBank('' ,  '');
 
         $oldordertitems = orderItems::where('email',Auth::user()->email)->get();
         orderItems::destroy($oldordertitems);
@@ -287,45 +288,56 @@ class PaymentController extends Controller
 
     }
 
+
     public function paywithpoints(){
         $amount = orderItems::where('email','=',Auth::user()->email)->sum('price');
+
         $transactionAmount = transaction::where('email','=',Auth::user()->email)->where('mode_of_payment','=','pay with GOG Points')->sum('amount');
+        $debit_total = debited::where('email','=',Auth::user()->email)->sum('points');
+
 
         $gogpoints = point::where('referal','=',Auth::user()->ref)->sum('points');
-        if($gogpoints > $transactionAmount){
 
+
+
+        $available_points = $gogpoints - $debit_total;
+
+
+        if($available_points > $amount){
             $phone =laundry_request::where('email','=',Auth::user()->email)->get('phone')->first();
-        $amount = orderItems::where('email','=',Auth::user()->email)->sum('price');
-        $data = new transaction;
-        $data->laundry_request_id = '00';
-        $data->email = Auth::user()->email;
-        $data->firstname =Auth::user()->firstname;
-        $data->lastname = Auth::user()->lastname;
-        $data->phone=  $phone;
-        $data->mode_of_payment = 'points';
-        $data->amount = $amount;
+            $amount = orderItems::where('email','=',Auth::user()->email)->sum('price');
 
-        $data->payment_staus = 'pending';
-        $data->reference_no = 'pay with GOG Points';
-        $saved =$data ->save();
-
-        if($saved){
-            $this->sendSmsToSimBank('' ,  '');
-
-        $oldordertitems = orderItems::where('email',Auth::user()->email)->get();
-        orderItems::destroy($oldordertitems);
-
-
-        return redirect('client/dashboard')->with('success',"Thank you for  patronising us!!! 😍 😁🥰 ");
+            $data = new transaction;
+            $data->laundry_request_id = '00';
+            $data->email = Auth::user()->email;
+            $data->firstname =Auth::user()->firstname;
+            $data->lastname = Auth::user()->lastname;
+             $data->phone=  $phone;
+             $data->mode_of_payment = 'points';
+             $data->amount = $amount;
+             $data->payment_staus = 'pending';
+             $data->reference_no = 'pay with GOG Points';
+             $saved =$data ->save();
 
 
 
-        }
+             if($saved ){
+                $save =  $debited_points = new debited;
+                $debited_points->email = Auth::user()->email;
+                $debited_points->points =  $amount;
+                $debited_points->save();
 
-
+            //  $this->sendSmsToSimBank('' ,  '');
+             $oldordertitems = orderItems::where('email',Auth::user()->email)->get();
+             orderItems::destroy($oldordertitems);
+             return redirect('client/dashboard')->with('success',"Thank you for  patronising us!!! 😍 😁🥰 ");
+             }
         }
         else{
-            return redirect();
+            return back()->with('fail','You do not have enough GOG Points to make purchase.Kindly use other payment methods. Thank you.');
+        }
+
+
         }
 
 
@@ -334,6 +346,18 @@ class PaymentController extends Controller
 
 
 
-    }
+
+        //
+        // else{
+        //     return redirect();
+        // }
+
+
+
+
+
+
+
+
 
 }

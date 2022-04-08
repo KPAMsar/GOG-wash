@@ -34,8 +34,23 @@
 
                                 <form action="{{route('paywithcrypto')}}" method="POST">
                                     @csrf
-                                    Send your crpto here and call for confirmation.<br>
-                                    Bitcoin address:
+                                    Send your crpto here and call for confirmation.<br><br><br><br>
+                                    <i class="fab fa-bitcoin" style="font-size:36px"></i>
+
+                                    <b>BTC address:</b>3EnmTEVBbJoo3DiDfP2dgzEtzxNR41LWd9
+                                    <br><br><br>
+                                    <i class='fab fa-ethereum' style='font-size:36px'></i>
+                                    <b>Ethereum address:</b>0x087595d28e9aaedd7a2c6ef65f310db7e79a5e34
+                                    <br><br><br>
+
+                                    <i class="fa fa-tron" style="font-size:36px"></i>
+
+                                    <b>Tron(Trx):</b>TB3U41ZwEYQJMqVzjD7ebMEJ1KQy4BYVfk
+
+                                    <br><br><br>
+                                    USDT (Trc20) address:TB3U41ZwEYQJMqVzjD7ebMEJ1KQy4BYVfk
+                                    <br>
+
                                     <br><br><button class="btn btn-primary" style="background-color:#063464; color:white;" onclick="" type="submit">Accept</button>
 
                                 </form>

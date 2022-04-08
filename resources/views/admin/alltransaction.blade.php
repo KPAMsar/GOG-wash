@@ -36,40 +36,32 @@
                     <div class="table-responsive">
                     <table id="table_id" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>S/N</th>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Express Laundry</th>
-                        <th>Action</th>
+                      <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>Reference Number</th>
+                        <th>Amount(NGN)</th>
+                        <th>Payment Status</th>
+                        <th>Mode of payment</th>
+                        <th>Date</th>
 
                     </tr>
                 </thead>
 
 
                 <tbody>
-                    @foreach($data as $item)
-                    <tr>
-                        <td>{{$item -> id}}</td>
-                        <td>{{$item -> item}}</td>
-                        <td>{{$item -> price}}</td>
-                        <td>{{$item -> express_laundry}}</td>
-
-                        <td><a href="{{url('admin/edit-items/'.$item->id)}}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                        <a href="{{url('admin/delete-customers/'.$item->id)}}"> <button  class="btn btn-sm btn-danger">
-
-                        <i class="fa fa-trash"></i>
-                        </button>
-                        </a>
-
-						</td>
-                    </tr>
+                    @foreach($alltransaction_summary as $transaction)
+                        <tr>
+                                <td>{{$transaction -> id}}</td>
+                                <td>{{$transaction -> email}}</td>
+                                <td>{{$transaction -> reference_no}}</td>
+                                <td>{{$transaction -> amount/ 100}}</td>
+                                <td>{{$transaction -> payment_staus}}</td>
+                                <td>{{$transaction -> mode_of_payment}}</td>
+                                <td>{{$transaction -> created_at}}</td>
+                        </tr>
                     @endforeach
-
-
-
                 </tbody>
-
 
             </table>
                     </div>

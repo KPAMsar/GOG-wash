@@ -28,7 +28,7 @@
 
 <li class="nav-item ">
   <a class="nav-link" href="{{route('admin.admin_staff')}}">
-  <i class=" fa-users"></i>
+  <i class="fa fa-user" aria-hidden="true"></i>
   <span>Admin Staff</span></a>
   </li>
 
@@ -100,7 +100,7 @@
   <!-- Nav Item - Customer -->
   <li class="nav-item ">
 
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{route('admin.alltransaction')}}">
       <i class="fas fa-fw fa-calculator"></i>
       <span>Transactions</span></a>
   </li>

@@ -60,6 +60,7 @@
                             <li class="list-group-item"><h>Number of Referals:{{$gogreferalscount}} Referals</h5></li>
 
                             <li class="list-group-item"><h>Points Earned:{{$gogpoints}}</h5></li>
+                            <li class="list-group-item"><h>Points used:{{$debit_total}}</h5></li>
 
 
 

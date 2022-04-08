@@ -1,3 +1,4 @@
+<meta name="_token" content="{{ csrf_token() }}">
 @extends('frontend.account.layouts.tables')
 
 @section('title', '')
@@ -56,15 +57,15 @@
                 <tbody>
                                     <!-- @php $total= 0; @endphp -->
                                         @foreach($data as $key => $item)
-                                        <form id="quantity" class="laundry_items" action="{{url('add-to-cart/'.$item->id)}}" method="post">
-                                            @csrf
+                                        <!-- <form id="quantity" class="laundry_items" action="" method="post">
+                                            @csrf -->
                                             <tr>
                                             <th scope="row">
                                                 <li><span class="fa-li"><i class="fa-solid fa-check-square"></i></span></li>
                                             </th>
 
                                             <td class="item_id" name="item_id">{{$item->item}}</td>
-                                            <input type="hidden" value="{{$item->item}}" name="item_id">
+                                            <input type="hidden" value="{{$item->item}}" name="item_id" id="me" class="item_name" >
                                             <td>{{$item->price}}</td>
                                             <td>
 
@@ -81,16 +82,16 @@
 
 
                                             <td>
-                                                <button type="submit"  class="btn addToCartBtn" style="background-color:#063464; color:white;">Wash</button></a></td>
+                                                <button type="button"   class="btn addToCartBtn_1"  id="BtnWash" style="background-color:#063464; color:white;">Wash</button></td>
                                             </tr>
-                                            </form>
+                                            <!-- </form> -->
                                             <!-- @php $total +=$item->price * -->
                                         @endforeach
 
                                     </tbody>
                             </table>
 
-                                <a href="{{route('client.laundry-cart')}}"><button type="button" class="btn" style="background-color:#063464; color:white;" >Proceed</button></a>
+                                <a href=""><button type="button" class="btn " style="background-color:#063464; color:white;" >Proceed</button></a>
 
                     </div>
 
@@ -101,61 +102,52 @@
                 $(document).ready(function() {
 
                 $("#table_id").dataTable();
-
-
-
-
-
-                } );
-                $(document).ready(function() {
-
-                      var addToCartBtn_1 = (e) => {
-        e.preventDefault();
-        var item_id =$('.item_id').text();
-        var item_quantity =$('.item_qty').val();
-        return
-
-         $.ajaxSetup({
-         headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-         }
-         });
-        $.ajax({
-            type: "post",
-            url: "/add-to-cart/{id}",
-            data: {
-               item_quantity:item_quantity,
-            },
-            success: function (response) {
-                alert(response.status);
-            }
-        });
-
-
-
-
                 } );
 
 
 
+                $(".addToCartBtn_1").click(function(event){
+                    event.preventDefault();
+
+                    // let quantity = $(".item_qty").val();
+                    // let email = $(this).closest('.table').find('.item_name').val();
+                    let tableRows = document.querySelectorAll("table tr");
+                    let currentRow;
+                    tableRows.forEach(element => {
+                        let currentButton = element.querySelector('button.addToCartBtn_1');
+                        if(currentButton == this) currentRow = element;
+                    });
+                    if(currentRow == undefined) return;
+                    let quantity = currentRow.querySelector('.item_qty').value;
+                    let itemName = currentRow.querySelector('.item_name').value;
+
+                    // alert(quantity + " -- " + itemName);
+                    $(function () {
+                        $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+                        });
+                    });
+
+                    $.ajax({
+                    url: "add-to-cart",
+                    type:"POST",
+                    data:{
+                        item_quantity :quantity,
+                        item_id:itemName,
+
+                    },
+                    success:function(response){
+                    alert('Item added to Laundry cart successfully.');
 
 
-        alert(item_quantity );
-    //     $.ajax({
-    //         url: "/add-to-cart/{id}",
-    //         type: 'POST',
-    //         data: {
+                    },
+                });
 
-    //      item_qty:item_quantity,
-    //  },
-    //         beforeSend: function (request) {
-    //             return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-    //         },
-    //         success: data => {
-    //             console.log(data);
-    //         }
-    //     });
-    }
+
+  });
+
+
+
         </script>
 
     </div>
@@ -179,43 +171,31 @@
 @section('cartitems--handler')
 <script src="js/cartitems--handler.js">
 
-var addToCartBtn_1 = (e) => {
-        e.preventDefault();
-        var item_id =$('.item_id').text();
-        var item_quantity =$('.item_qty').val();
-        return
+// var addToCartBtn_1 = (e) => {
+//         e.preventDefault();
+//         var item_id =$('.item_id').text();
+//         var item_quantity =$('.item_qty').val();
+//         return
 
-         $.ajaxSetup({
-         headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-         }
-         });
-        $.ajax({
-            type: "post",
-            url: "/add-to-cart/{id}",
-            data: {
-               item_quantity:item_quantity,
-            },
-            success: function (response) {
-                alert(response.status);
-            }
-        });
+//          $.ajaxSetup({
+//          headers: {
+//              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//          }
+//          });
+//         $.ajax({
+//             type: "post",
+//             url: "/add-to-cart/{id}",
+//             data: {
+//                item_quantity:item_quantity,
+//             },
+//             success: function (response) {
+//                 alert(response.status);
+//             }
+//         });
 
-        alert(item_quantity );
-    //     $.ajax({
-    //         url: "/add-to-cart/{id}",
-    //         type: 'POST',
-    //         data: {
+//         alert(item_quantity );
 
-    //      item_qty:item_quantity,
-    //  },
-    //         beforeSend: function (request) {
-    //             return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-    //         },
-    //         success: data => {
-    //             console.log(data);
-    //         }
-    //     });
-    }
+//     //     });
+//     }
 </script>
 @endsection
